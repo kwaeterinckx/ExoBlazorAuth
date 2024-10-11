@@ -1,0 +1,26 @@
+﻿@page "/users"
+@attribute [Authorize(Roles = "Admin")]
+
+<h3>Users</h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>User Id</th>
+            <th>Login</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    @foreach(UserModel user in AllUsers)
+    {
+        <tr>
+            <td>@(user.UserId)</td>
+            <td>@(user.Login)</td>
+            <td>@(user.Email)</td>
+            <td>@(user.IsAdmin ? "Admin": "User")</td>
+            <td></td>
+        </tr>
+    }
+</table>
