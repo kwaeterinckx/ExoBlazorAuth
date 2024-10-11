@@ -21,11 +21,11 @@ namespace ExoBlazor_API.Repositories
             return _connection.Execute(sql, new { login, email, password }) > 0;
         }
 
-        public User Login(string login, string password)
+        public User? Login(string login, string password)
         {
             string sql = "SELECT * FROM Users WHERE Login = @login AND Password = @password";
 
-            return _connection.QuerySingle<User>(sql, new { login, password });
+            return _connection.QuerySingleOrDefault<User>(sql, new { login, password });
         }
 
         public List<User> GetUsers()
@@ -35,18 +35,18 @@ namespace ExoBlazor_API.Repositories
             return _connection.Query<User>(sql).ToList();
         }
 
-        internal string GetPassword(string login)
+        internal string? GetPassword(string login)
         {
             string sql = "SELECT Password FROM Users WHERE Login = @login";
 
-            return _connection.QuerySingle<string>(sql, new { login });
+            return _connection.QuerySingleOrDefault<string>(sql, new { login });
         }
 
-        internal User GetProfileByLogin(string login)
+        internal User? GetProfileByLogin(string login)
         {
             string sql = "SELECT * FROM Users WHERE Login = @login";
 
-            return _connection.QuerySingle<User>(sql, new { login });
+            return _connection.QuerySingleOrDefault<User>(sql, new { login });
         }
     }
 }

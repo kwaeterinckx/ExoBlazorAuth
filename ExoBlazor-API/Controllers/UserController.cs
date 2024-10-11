@@ -42,11 +42,11 @@ namespace ExoBlazor_API.Controllers
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            string hashedPassword = _userRepository.GetPassword(user.Login);
+            string? hashedPassword = _userRepository.GetPassword(user.Login);
 
-            if (BCrypt.Net.BCrypt.Verify(user.Password, hashedPassword))
+            if (hashedPassword is not null && BCrypt.Net.BCrypt.Verify(user.Password, hashedPassword))
             {
-                string token = _jwtGenerator.GenerateToken(_userRepository.Login(user.Login, hashedPassword));
+                string token = _jwtGenerator.GenerateToken(_userRepository.Login(user.Login, hashedPassword!)!);
 
                 return Ok(token);
             }

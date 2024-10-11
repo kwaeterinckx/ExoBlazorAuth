@@ -17,12 +17,15 @@ namespace ExoBlazor_FE.Pages
             if (!response.IsSuccessStatusCode)
             {
                 await Console.Out.WriteLineAsync("Error " + response.ReasonPhrase);
+                Nav.NavigateTo("/login");
             }
-
-            string token = await response.Content.ReadAsStringAsync();
-            await JSRuntime.InvokeVoidAsync("localStorage.setItem", "token", token);
-            ((MyStateProvider)AuthenticationStateProvider).NotifyUserChanged();
-            Nav.NavigateTo("/");
+            else
+            {
+                string token = await response.Content.ReadAsStringAsync();
+                await JSRuntime.InvokeVoidAsync("localStorage.setItem", "token", token);
+                ((MyStateProvider)AuthenticationStateProvider).NotifyUserChanged();
+                Nav.NavigateTo("/");
+            }
         }
     }
 }
