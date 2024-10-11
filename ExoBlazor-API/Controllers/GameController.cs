@@ -33,7 +33,7 @@ namespace ExoBlazor_API.Controllers
             return BadRequest("An error occurred during insertion.");
         }
 
-        [HttpGet("Games")]
+        [HttpGet]
         public IActionResult GetAllGames()
         {
             return Ok(_gameRepository.GetAllGames());

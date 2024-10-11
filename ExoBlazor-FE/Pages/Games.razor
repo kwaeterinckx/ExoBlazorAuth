@@ -1,0 +1,27 @@
+﻿@page "/games"
+
+<h3>Games</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Game Id</th>
+            <th>Title</th>
+            <th>Synopsis</th>
+            <th>Release year</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (GameModel game in AllGames)
+        {
+            <tr>
+                <td>@(game.GameId)</td>
+                <td>@(game.Title)</td>
+                <td>@(game.Synopsis)</td>
+                <td>@(game.ReleaseYear)</td>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+</table>
