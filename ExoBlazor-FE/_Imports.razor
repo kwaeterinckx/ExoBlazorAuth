@@ -8,3 +8,11 @@
 @using Microsoft.JSInterop
 @using ExoBlazor_FE
 @using ExoBlazor_FE.Layout
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Authorization
+@using ExoBlazor_FE.Services
+
+@inject HttpClient HttpClient
+@inject IJSRuntime JSRuntime
+@inject NavigationManager Nav
+@inject AuthenticationStateProvider AuthenticationStateProvider

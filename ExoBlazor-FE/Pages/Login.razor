@@ -1,0 +1,17 @@
+﻿@page "/login"
+@attribute [AllowAnonymous]
+
+<h3>Login</h3>
+
+<EditForm Model="LoginForm" OnValidSubmit="SubmitForm">
+    <DataAnnotationsValidator />
+    <div class="form-control">
+        Login : <InputText @bind-Value="LoginForm.Login" />
+        <ValidationMessage For="() => LoginForm.Login" />
+    </div>
+    <div class="form-control">
+        Password : <InputText type="password" @bind-Value="LoginForm.Password" />
+        <ValidationMessage For="() => LoginForm.Password" />
+    </div>
+    <button type="submit" class="btn btn-sm btn-primary">Valider</button>
+</EditForm>

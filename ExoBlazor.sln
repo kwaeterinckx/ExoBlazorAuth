@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExoBlazor-FE", "ExoBlazor-FE\ExoBlazor-FE.csproj", "{400B208E-80EA-46ED-B5D5-DBBC4432C986}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExoBlazor-FE", "ExoBlazor-FE\ExoBlazor-FE.csproj", "{400B208E-80EA-46ED-B5D5-DBBC4432C986}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExoBlazor-API", "ExoBlazor-API\ExoBlazor-API.csproj", "{278593E9-337C-413B-A7D5-F0A99777016C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExoBlazor-API", "ExoBlazor-API\ExoBlazor-API.csproj", "{278593E9-337C-413B-A7D5-F0A99777016C}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ExoBlazor-DB", "ExoBlazor-DB\ExoBlazor-DB.sqlproj", "{E2E64C9B-E210-4100-84D2-08164CC11515}"
 EndProject

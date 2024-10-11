@@ -1,0 +1,21 @@
+﻿@page "/register"
+@attribute [AllowAnonymous]
+
+<h3>Register</h3>
+
+<EditForm Model="RegisterForm" OnValidSubmit="SubmitForm">
+    <DataAnnotationsValidator />
+    <div class="form-control">
+        Login : <InputText @bind-Value="RegisterForm.Login" />
+        <ValidationMessage For="() => RegisterForm.Login" />
+    </div>
+    <div class="form-control">
+        Email : <InputText @bind-Value="RegisterForm.Email" />
+        <ValidationMessage For="() => RegisterForm.Email" />
+    </div>
+    <div class="form-control">
+        Password : <InputText type="password" @bind-Value="RegisterForm.Password" />
+        <ValidationMessage For="() => RegisterForm.Password" />
+    </div>
+    <button type="submit" class="btn btn-sm btn-primary">Valider</button>
+</EditForm>

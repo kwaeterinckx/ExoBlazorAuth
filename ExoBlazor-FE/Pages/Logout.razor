@@ -1,0 +1,10 @@
+﻿@page "/logout"
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await JSRuntime.InvokeVoidAsync("localStorage.clear");
+        ((MyStateProvider)AuthenticationStateProvider).NotifyUserChanged();
+        Nav.NavigateTo("/");
+    }
+}
