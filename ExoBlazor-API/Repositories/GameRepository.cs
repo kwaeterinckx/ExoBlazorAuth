@@ -32,7 +32,7 @@ namespace ExoBlazor_API.Repositories
         {
             string sql = "SELECT * FROM Games WHERE GameId = @gameId";
 
-            return _connection.QuerySingle<Game>(sql, new { gameId });
+            return _connection.QuerySingleOrDefault<Game>(sql, new { gameId });
         }
 
         public bool UpdateGame(int gameId, Game game)

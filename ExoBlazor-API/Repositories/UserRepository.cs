@@ -25,7 +25,7 @@ namespace ExoBlazor_API.Repositories
         {
             string sql = "SELECT * FROM Users WHERE Login = @login AND Password = @password";
 
-            return _connection.QuerySingle(sql, new { login, password });
+            return _connection.QuerySingle<User>(sql, new { login, password });
         }
 
         public List<User> GetUsers()

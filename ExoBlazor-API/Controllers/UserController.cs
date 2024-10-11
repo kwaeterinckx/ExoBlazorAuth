@@ -4,6 +4,8 @@ using ExoBlazor_API.Tools;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using BCrypt.Net;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ExoBlazor_API.Controllers
 {
@@ -27,12 +29,12 @@ namespace ExoBlazor_API.Controllers
 
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(user.Password);
 
-            if (_userRepository.Register(user.Login, hashedPassword, user.Email))
+            if (_userRepository.Register(user.Login, user.Email, hashedPassword))
             {
                 return Ok("Registration successful");
             }
 
-            return BadRequest("A problem occurred during registration.");
+            return BadRequest("An error occurred during registration.");
         }
 
         [HttpPost("Login")]
@@ -50,6 +52,24 @@ namespace ExoBlazor_API.Controllers
             }
 
             return BadRequest("Invalid password");
+        }
+
+        [HttpGet]
+        public IActionResult GetUsers()
+        {
+            return Ok(_userRepository.GetUsers());
+        }
+
+        [Authorize("UserRequired")]
+        [HttpGet("Profile")]
+        public IActionResult GetProfile()
+        {
+            string tokenFromRequest = HttpContext.Request.Headers["Authorization"];
+            string token = tokenFromRequest.Substring(7, tokenFromRequest.Length - 7);
+            JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(token);
+            string login = jwtSecurityToken.Claims.Single(l => l.Type == "Login").Value;
+
+            return Ok(_userRepository.GetProfileByLogin(login));
         }
     }
 }
